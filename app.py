@@ -7,6 +7,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+os.environ["VERIFY_TOKEN"] = "qualquer_coisa"
 
 @app.route('/', methods=['GET'])
 def verify():
