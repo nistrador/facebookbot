@@ -65,8 +65,7 @@ def send_message(recipient_id, message_text):
     headers = {
         "Content-Type": "application/json"
     }
-	if "economia" in message_text.lower()
-	{
+	if "economia" in message_text.lower():
 		data = json.dumps({
 			"recipient": {
 				"id": recipient_id
@@ -99,9 +98,7 @@ def send_message(recipient_id, message_text):
 				}
 			}
 		})
-	}
-	elif "brasil" in message_text.lower()
-	{
+	elif "brasil" in message_text.lower():
 		data = json.dumps({
 			"recipient": {
 				"id": recipient_id
@@ -134,9 +131,7 @@ def send_message(recipient_id, message_text):
 				}
 			}
 		})
-	}
-	elif "rio" in message_text.lower()
-	{
+	elif "rio" in message_text.lower():
 		data = json.dumps({
 			"recipient": {
 				"id": recipient_id
@@ -169,7 +164,6 @@ def send_message(recipient_id, message_text):
 				}
 			}
 		})
-	}
 	else:
 		data = json.dumps({
 			"recipient": {
