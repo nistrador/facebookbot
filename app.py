@@ -57,7 +57,7 @@ def webook():
 
 def send_message(recipient_id, message_text):
 
-    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+	log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
     params = {
         "access_token": os.environ["PAGE_ACCESS_TOKEN"]
@@ -73,6 +73,106 @@ def send_message(recipient_id, message_text):
             "text": message_text
         }
     })
+	if "economia" in message_text.lower():
+		data = json.dumps({
+			"recipient": {
+				"id": recipient_id
+			},
+			"message": {
+				"attachment": {
+					"type" : "template",
+					"payload": {
+						"template_type": "generic",
+						"elements":[
+						  {
+							"title": "Uruguai diz que Serra tentou comprar voto no Mercosul",
+							"image_url": "http://og.infg.com.br/economia/19725775-2a3-821/FT1086A/420/201607142256204353_RTS.jpg",
+							"subtitle": "Objetivo seria suspender transferência da presidência do grupo para a Venezuela",
+							"buttons":[
+								{
+									"type":"web_url",
+									"url":"http://oglobo.globo.com/economia/uruguai-diz-que-serra-tentou-comprar-voto-no-mercosul-19933386",
+									"title":"Leia a notícia"
+								},
+								{
+									"type":"postback",
+									"title":"Start Chatting",
+									"payload":"USER_DEFINED_PAYLOAD"
+								}
+							]
+						  }
+						]
+					}
+				}
+			}
+		})
+	elif "brasil" in message_text.lower():
+		data = json.dumps({
+			"recipient": {
+				"id": recipient_id
+			},
+			"message": {
+				"attachment": {
+					"type" : "template",
+					"payload": {
+						"template_type": "generic",
+						"elements":[
+						  {
+							"title": "STF abre inquérito contra Dilma e Lula por tentativa de obstrução da Justiça",
+							"image_url": "http://og.infg.com.br/in/19936117-7d7-158/FT1086A/420/2016_908888271-201605121459541318.jpg_20160512.jpg",
+							"subtitle": "Cardozo e Mercadante também são alvo de apuração",
+							"buttons":[
+								{
+									"type":"web_url",
+									"url":"http://oglobo.globo.com/economia/uruguai-diz-que-serra-tentou-comprar-voto-no-mercosul-19933386",
+									"title":"Leia a notícia"
+								},
+								{
+									"type":"postback",
+									"title":"Start Chatting",
+									"payload":"USER_DEFINED_PAYLOAD"
+								}
+							]
+						  }
+						]
+					}
+				}
+			}
+		})
+	elif "rio" in message_text.lower():
+		data = json.dumps({
+			"recipient": {
+				"id": recipient_id
+			},
+			"message": {
+				"attachment": {
+					"type" : "template",
+					"payload": {
+						"template_type": "generic",
+						"elements":[
+						  {
+							"title": "Sócio da fábrica do Biscoito Globo diz que apoio de cariocas supera crítica no 'NYT'",
+							"image_url": "http://og.infg.com.br/in/19923793-52b-4f7/FT1500A/550/globo.jpg",
+							"subtitle": "Jornalista afirmou que iguaria é sem gosto e foi bombardeado nas redes",
+							"buttons":[
+								{
+									"type":"web_url",
+									"url":"http://oglobo.globo.com/rio/socio-da-fabrica-do-biscoito-globo-diz-que-apoio-de-cariocas-supera-critica-no-nyt-19930926",
+									"title":"Leia a notícia"
+								},
+								{
+									"type":"postback",
+									"title":"Start Chatting",
+									"payload":"USER_DEFINED_PAYLOAD"
+								}
+							]
+						  }
+						]
+					}
+				}
+			}
+		})
+
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
