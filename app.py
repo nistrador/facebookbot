@@ -59,20 +59,20 @@ def send_message(recipient_id, message_text):
 
 	log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
-    params = {
-        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        },
-        "message": {
-            "text": message_text
-        }
-    })
+	params = {
+		"access_token": os.environ["PAGE_ACCESS_TOKEN"]
+	}
+	headers = {
+		"Content-Type": "application/json"
+	}
+	data = json.dumps({
+		"recipient": {
+			"id": recipient_id
+		},
+		"message": {
+			"text": message_text
+		}
+	})
 	if "economia" in message_text.lower():
 		data = json.dumps({
 			"recipient": {
@@ -83,8 +83,7 @@ def send_message(recipient_id, message_text):
 					"type" : "template",
 					"payload": {
 						"template_type": "generic",
-						"elements":[
-						  {
+						"elements":[{
 							"title": "Uruguai diz que Serra tentou comprar voto no Mercosul",
 							"image_url": "http://og.infg.com.br/economia/19725775-2a3-821/FT1086A/420/201607142256204353_RTS.jpg",
 							"subtitle": "Objetivo seria suspender transferência da presidência do grupo para a Venezuela",
