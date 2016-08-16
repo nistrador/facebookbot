@@ -8,6 +8,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 os.environ["VERIFY_TOKEN"] = "qualquer_coisa"
+os.environ["PAGE_ACCESS_TOKEN"] = "EAAGIxS2E41EBACDOAy7ZAyumlpqlDifcz1ZAqCiNynX1GTeMLjQZAT38JIrKuR6JKZAvUsPWCSZBVApcduCPBOF3xB9G5bJWfid9QIRH8v26wq3TFgbZCuYIpiKVztcCWAVKkvSDdR99ACBKh0DJ5ZCqspIiI6HGMiKZCXj5ZCvK7lgZDZD"
 
 @app.route('/', methods=['GET'])
 def verify():
