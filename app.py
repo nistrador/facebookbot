@@ -41,7 +41,7 @@ def webook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
-                    send_message(sender_id, "got it, thanks!")
+                    send_message(sender_id, message_text)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -70,7 +70,7 @@ def send_message(recipient_id, message_text):
 			"id": recipient_id
 		},
 		"message": {
-			"text": message_text
+			"text": "got it, thanks!"
 		}
 	})
 
