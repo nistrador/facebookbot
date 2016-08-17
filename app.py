@@ -39,7 +39,7 @@ def webook():
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    message_text = messaging_event["message"]["text"]  # the message's text
+                    message_text = messaging_event["message"]["text"].decode('utf-8')  # the message's text
 
                     send_message(sender_id, message_text)
 
@@ -72,7 +72,7 @@ def send_message(recipient_id, message_text):
 		"message": {
 			"text": "got it, thanks!"
 		}
-	})
+	}, ensure_ascii=False).encode('utf-8')
 
     newMessage = message_text.lower()
     if newMessage.find("economia") != -1:
@@ -106,7 +106,7 @@ def send_message(recipient_id, message_text):
                     }
                 }
             }
-        })
+        }, ensure_ascii=False).encode('utf-8')
     elif newMessage.find("brasil") != -1:
         data = json.dumps({
             "recipient": {
@@ -139,7 +139,7 @@ def send_message(recipient_id, message_text):
                     }
                 }
             }
-        })
+        }, ensure_ascii=False).encode('utf-8')
     elif newMessage.find("rio") != -1:
         data = json.dumps({
             "recipient": {
@@ -172,7 +172,7 @@ def send_message(recipient_id, message_text):
                     }
                 }
             }
-        })
+        }, ensure_ascii=False).encode('utf-8')
 
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
