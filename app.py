@@ -77,12 +77,12 @@ def send_message(recipient_id, message_text):
                     "elements":[{
                         "title": "Uruguai diz que Serra tentou comprar voto no Mercosul",
                         "image_url": "http://og.infg.com.br/economia/19725775-2a3-821/FT1086A/420/201607142256204353_RTS.jpg",
-                        "subtitle": "Objetivo seria suspender transferência da presidência do grupo para a Venezuela",
+                        "subtitle": "Objetivo seria suspender transferencia da presidencia do grupo para a Venezuela",
                         "buttons":[
                             {
                                 "type":"web_url",
                                 "url":"http://oglobo.globo.com/economia/uruguai-diz-que-serra-tentou-comprar-voto-no-mercosul-19933386",
-                                "title":"Leia a notícia"
+                                "title":"Leia a noticia"
                             },
                             {
                                 "type":"postback",
