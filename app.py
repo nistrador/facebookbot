@@ -65,10 +65,17 @@ def send_message(recipient_id, message_text):
     headers = {
         "Content-Type": "application/json"
     }
-    
-	
-	newMessage = message_text.lower()
-    if "economia" in newMessage:
+    data = json.dumps({
+		"recipient": {
+			"id": recipient_id
+		},
+		"message": {
+			"text": message_text
+		}
+	})
+
+    newMessage = message_text.lower()
+    if newMessage.find("economia") != -1:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -100,7 +107,7 @@ def send_message(recipient_id, message_text):
                 }
             }
         })
-    elif "brasil" in newMessage:
+    elif newMessage.find("brasil") != -1:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -133,7 +140,7 @@ def send_message(recipient_id, message_text):
                 }
             }
         })
-    elif "rio" in newMessage:
+    elif newMessage.find("rio") != -1:
         data = json.dumps({
             "recipient": {
                 "id": recipient_id
@@ -145,7 +152,7 @@ def send_message(recipient_id, message_text):
                         "template_type": "generic",
                         "elements":[
                           {
-                            "title": "Socio da fabrica do Biscoito Globo diz que apoio de cariocas supera critica no 'NYT'",
+                            "title": u"Sócio da fabrica do Biscoito Globo diz que apoio de cariocas supera critica no 'NYT'",
                             "image_url": "http://og.infg.com.br/in/19923793-52b-4f7/FT1500A/550/globo.jpg",
                             "subtitle": "Jornalista afirmou que iguaria e sem gosto e foi bombardeado nas redes",
                             "buttons":[
@@ -166,15 +173,6 @@ def send_message(recipient_id, message_text):
                 }
             }
         })
-	else:
-		data = json.dumps({
-			"recipient": {
-				"id": recipient_id
-			},
-			"message": {
-				"text": message_text
-			}
-		})
 
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
