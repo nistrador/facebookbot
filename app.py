@@ -70,7 +70,30 @@ def send_message(recipient_id, message_text):
             "id": recipient_id
         },
         "message": {
-            "text": message_text
+            "attachment": {
+                "type" : "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements":[{
+                        "title": "Uruguai diz que Serra tentou comprar voto no Mercosul",
+                        "image_url": "http://og.infg.com.br/economia/19725775-2a3-821/FT1086A/420/201607142256204353_RTS.jpg",
+                        "subtitle": "Objetivo seria suspender transferência da presidência do grupo para a Venezuela",
+                        "buttons":[
+                            {
+                                "type":"web_url",
+                                "url":"http://oglobo.globo.com/economia/uruguai-diz-que-serra-tentou-comprar-voto-no-mercosul-19933386",
+                                "title":"Leia a notícia"
+                            },
+                            {
+                                "type":"postback",
+                                "title":"Start Chatting",
+                                "payload":"USER_DEFINED_PAYLOAD"
+                            }
+                        ]
+                      }
+                    ]
+                }
+            }
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
