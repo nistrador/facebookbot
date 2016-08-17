@@ -41,7 +41,7 @@ def webook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
-                    send_message(sender_id, "alterei a mensagem, obrigado!")
+                    send_message(sender_id, "got it, thanks!")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -70,32 +70,108 @@ def send_message(recipient_id, message_text):
             "id": recipient_id
         },
         "message": {
-            "attachment": {
-                "type" : "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements":[{
-                        "title": "Uruguai diz que Serra tentou comprar voto no Mercosul",
-                        "image_url": "http://og.infg.com.br/economia/19725775-2a3-821/FT1086A/420/201607142256204353_RTS.jpg",
-                        "subtitle": "Objetivo seria suspender transferencia da presidencia do grupo para a Venezuela",
-                        "buttons":[
-                            {
-                                "type":"web_url",
-                                "url":"http://oglobo.globo.com/economia/uruguai-diz-que-serra-tentou-comprar-voto-no-mercosul-19933386",
-                                "title":"Leia a noticia"
-                            },
-                            {
-                                "type":"postback",
-                                "title":"Start Chatting",
-                                "payload":"USER_DEFINED_PAYLOAD"
-                            }
-                        ]
-                      }
-                    ]
-                }
-            }
+            "text": message_text
         }
     })
+    if "economia" in message_text.lower():
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment": {
+                    "type" : "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements":[{
+                            "title": "Uruguai diz que Serra tentou comprar voto no Mercosul",
+                            "image_url": "http://og.infg.com.br/economia/19725775-2a3-821/FT1086A/420/201607142256204353_RTS.jpg",
+                            "subtitle": "Objetivo seria suspender transferencia da presidencia do grupo para a Venezuela",
+                            "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://oglobo.globo.com/economia/uruguai-diz-que-serra-tentou-comprar-voto-no-mercosul-19933386",
+                                    "title":"Leia a noticia"
+                                },
+                                {
+                                    "type":"postback",
+                                    "title":"Start Chatting",
+                                    "payload":"USER_DEFINED_PAYLOAD"
+                                }
+                            ]
+                          }
+                        ]
+                    }
+                }
+            }
+        })
+    elif "brasil" in message_text.lower():
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment": {
+                    "type" : "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements":[
+                          {
+                            "title": "STF abre inquerito contra Dilma e Lula por tentativa de obstrucao da Justica",
+                            "image_url": "http://og.infg.com.br/in/19936117-7d7-158/FT1086A/420/2016_908888271-201605121459541318.jpg_20160512.jpg",
+                            "subtitle": "Cardozo e Mercadante tambem sao alvo de apuracao",
+                            "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://oglobo.globo.com/economia/uruguai-diz-que-serra-tentou-comprar-voto-no-mercosul-19933386",
+                                    "title":"Leia a noticia"
+                                },
+                                {
+                                    "type":"postback",
+                                    "title":"Start Chatting",
+                                    "payload":"USER_DEFINED_PAYLOAD"
+                                }
+                            ]
+                          }
+                        ]
+                    }
+                }
+            }
+        })
+    elif "rio" in message_text.lower():
+        data = json.dumps({
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "attachment": {
+                    "type" : "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements":[
+                          {
+                            "title": "Socio da fabrica do Biscoito Globo diz que apoio de cariocas supera critica no 'NYT'",
+                            "image_url": "http://og.infg.com.br/in/19923793-52b-4f7/FT1500A/550/globo.jpg",
+                            "subtitle": "Jornalista afirmou que iguaria e sem gosto e foi bombardeado nas redes",
+                            "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://oglobo.globo.com/rio/socio-da-fabrica-do-biscoito-globo-diz-que-apoio-de-cariocas-supera-critica-no-nyt-19930926",
+                                    "title":"Leia a noticia"
+                                },
+                                {
+                                    "type":"postback",
+                                    "title":"Start Chatting",
+                                    "payload":"USER_DEFINED_PAYLOAD"
+                                }
+                            ]
+                          }
+                        ]
+                    }
+                }
+            }
+        })
+
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
