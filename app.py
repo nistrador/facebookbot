@@ -103,6 +103,23 @@ def send_message(recipient_id, message_text):
                                     "payload":"USER_DEFINED_PAYLOAD"
                                 }
                             ]
+                          },
+                          {
+                            "title": "Fazenda confirma que crescimento de 2017 sera revisto para 1,6%",
+                            "image_url": "http://og.infg.com.br/economia/19618885-016-bfc/FT1086A/420/INFOCHPDPICT000058158919-767.jpg",
+                            "subtitle": "Expectativa para inflacao sera mantida em 4,8%, diz secretario de Politica Economica",
+                            "buttons":[
+                                {
+                                    "type":"web_url",
+                                    "url":"http://oglobo.globo.com/economia/fazenda-confirma-que-crescimento-de-2017-sera-revisto-para-16-19943139",
+                                    "title":"Leia a noticia"
+                                },
+                                {
+                                    "type":"postback",
+                                    "title":"Start Chatting",
+                                    "payload":"USER_DEFINED_PAYLOAD"
+                                }
+                            ]
                           }
                         ]
                     }
