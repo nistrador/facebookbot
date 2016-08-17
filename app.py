@@ -152,7 +152,7 @@ def send_message(recipient_id, message_text):
                         "template_type": "generic",
                         "elements":[
                           {
-                            "title": u"Sócio da fabrica do Biscoito Globo diz que apoio de cariocas supera critica no 'NYT'",
+                            "title": "Socio da fabrica do Biscoito Globo diz que apoio de cariocas supera critica no 'NYT'",
                             "image_url": "http://og.infg.com.br/in/19923793-52b-4f7/FT1500A/550/globo.jpg",
                             "subtitle": "Jornalista afirmou que iguaria e sem gosto e foi bombardeado nas redes",
                             "buttons":[
